@@ -1,0 +1,31 @@
+server:
+  port: 9090
+spring:
+  datasource:
+    #driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/demotutos
+    platform: postgres
+    username: postgres
+    password: admin
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  application:
+    name: demo
+# datasource:
+#   url: jdbc:h2:mem:testdb;
+#   driver-class-name: org.h2.Driver
+#   username: sa
+#   password:
+# h2:
+#   console:
+#    enabled: true
+#    jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
