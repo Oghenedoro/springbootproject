@@ -1,0 +1,26 @@
+apiVersion: demo/v1
+kind: Deployment
+metadata:
+  name: demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+        - name: demo
+          image: demo:latest
+          ports:
+            - containerPort: 8181
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql:////localhost:5432/demotutos
+            - name: SPRING_DATASOURCE_USERNAME
+              value: postgres
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: admin
