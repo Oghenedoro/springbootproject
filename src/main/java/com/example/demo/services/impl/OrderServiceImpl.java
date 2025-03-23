@@ -58,6 +58,7 @@ public class OrderServiceImpl implements OrderService {
 
         for (OrdersProductsDto dto : orderDto.getOrdersProducts()) {
             Long idProduct = dto.getProductId();
+            int quantity = dto.getQuantity();
             Optional<Product> product = productRepository.findById(idProduct);
 
             // Vérification de l'existence des produits
@@ -67,7 +68,8 @@ public class OrderServiceImpl implements OrderService {
             OrdersProducts ordersProducts = mapper.mapFronOrdersProductsDTOtoEntity(dto);
 
             ordersProducts.setProduct(product.get());
-            ordersProducts.setOrder(order);ordersProducts.setQuantity(dto.getQuantity());
+            ordersProducts.setOrder(order);
+            ordersProducts.setQuantity(quantity);
             ordersProducts.setPrice(product.get().getPrice());
 
             ordersProducts = ordersProductsRep.save(ordersProducts);
